@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.week.WeekFragment">
+
+    <data>
+        <!-- Привязки данных -->
+        <variable
+            name="viewModel"
+            type="com.example.myweather.ui.home.WeatherViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+        <!-- Верхняя полоса с иконкой и текстом -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/icon_weather"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/ic_weather_icon"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/text_app_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MyWeather"
+                android:textColor="#0092FF"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+        <!-- Название города -->
+        <TextView
+            android:id="@+id/cityName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.cityName}"
+            android:textSize="18sp"
+            android:layout_below="@drawable/ic_weather_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"/>
+
+        <!-- Список прогноза на неделю -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/weekWeatherRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/cityName"
+            android:layout_marginTop="16dp"/>
+    </RelativeLayout>
+</layout>
